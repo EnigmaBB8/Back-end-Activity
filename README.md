@@ -9,11 +9,13 @@ Este metodo introduce a la base de datos un elemento tipo pelicula con sus respe
 - duracion
 - genero
 
-#### NOTA: todos los campos NO deben estar vacios.
+#### NOTA: id es unico y no puede ser null, están permitodos los null en el resto de campos
 
-1. **Endpoint:** ```/api/peliculas/agregarPelicula```
-2. **Método:** ```POST```
-3. **Body:** 
+1.1.1. **Endpoint:** ```/api/peliculas/agregarPelicula```
+
+1.1.2 **Método:** ```POST```
+
+1.1.3. **Body:** 
 
 ```
 {
@@ -26,105 +28,135 @@ Este metodo introduce a la base de datos un elemento tipo pelicula con sus respe
 }
 ```
 
-4. **Validaciones:**
-5. **Errores:**
+1.1.4. **Validaciones:**
+
+- Titulo: La longitud minima de la pelicula es 5 y el maximo 50
+- Anio: Agrega una pelicula producida despues de 1930
+- Duracion: La duracion no puede ser negativa
+
+1.1.5. **Errores:**
+
+```HTTP 244``` 
 
 ### 1.2 Agregar un museo
 Este metodo introduce a la base de datos un elemento tipo museo con sus respectivos datos:
+- id
 - nombre
-- categoria
-- ubicación
-- descripción
+- anio
+- lugar
+- precioBoleto
 
-#### NOTA: todos los campos NO deben estar vacios.
+#### NOTA: id es unico y no puede ser null, están permitodos los null en el resto de campos
 
-1. **Endpoint:** ```/museos/agregarMuseo```
-2. **Método:** ```POST```
-3. **Body:**
+1.2.1. **Endpoint:** ```/api/museos/agregarMuseo```
+
+1.2.2. **Método:** ```POST```
+
+1.2.3. **Body:**
 
 ```
 {
-    "nombre": "Museo Mágico",
-    "ubicacion": "San martin de hipocampo",
-    "categoria": "Gratuito",
-    "descripcion": "Museo de artes misticas"
+    "id":3,
+    "nombre":"Historia del arte",
+    "anio": 2004,
+    "lugar": "Polanco",
+    "precioBoleto": 233
 }
 ```
 
-4. **Validaciones:**
-5. **Errores:**
+1.2.4. **Validaciones:**
+
+- Nombre: La longitud minima del nombre es 5 y el maximo 50
+- Anio: Agrega un museo inagurado despues de 1920
+- PrecioBoletos: El precio de entrada no puede ser negativo
+
+1.2.5. **Errores:**
+
+```HTTP 244``` 
+
+### 1.3 Agregar una playlist
+Este metodo introduce a la base de datos un elemento tipo playlist con sus respectivos datos:
+- idP
+- lanzamiento
+- peliculaId
+- museoId
+
+#### NOTA: idP es unico y no puede ser null, están permitodos los null en el resto de campos excepto museoId y pelicula Id
+
+1.3.1. **Endpoint:** ```/api/playlist/agregarPlaylist```
+
+1.3.2. **Método:** ```POST```
+
+1.3.3. **Body:**
+
+```
+{
+    "idP":2,
+    "lanzamiento":2020,
+    "peliculaId": 1,
+    "museoId": 1
+}
+```
+
+1.3.4. **Validaciones:**
+
+- museoId: No puede ser null
+- peliculaId: No puede ser null
+
+1.3.5. **Errores:**
+
+```HTTP 244``` 
 
 ## 2. Mostrar elemento de la base de datos
 
-Este metodo despliega todos las peliculas registradas en la base de datos.
+### 2.1 Mostrar peliculas
+Este metodo muestra las peliculas almacenadas en la base de datos
 
-1. **Endpoint:** ```/peliculas/mostrarPeliculas``` **o** ```/museos/mostrarMuseos```
-2. **Método:** ```GET```
-3. **Body:**
-4. **Validaciones:**
-5. **Errores:**
+2.1.1. **Endpoint:** ```/api/peliculas/obtenerPeliculas```
 
-## 3. Actualizar datos de un elemento
-### 3.1 Actualizar datos de una pelicula
-Este metodo actualiza en la base de datos un elemento tipo pelicula con datos:
-- título
-- año
-- director
-- duración
-- clasificación
+2.1.2. **Método:** ```GET```
 
-#### Este metodo busca el elemento recibido con los datos anteriores.
+2.1.3. **Response:** 
 
-1. **Endpoint:** ```/peliculas/actualizarPelicula```
-2. **Método:** ```POST```
-3. **Body:**
-4. **Validaciones:**
-5. **Errores:**
-
-### 3.2 Actualizar datos de un museo
-Este metodo introduce en la base de datos un elemento tipo museo con sus respectivos datos:
-- nombre
-- categoria
-- ubicación
-- descripción
-
-#### Este metodo busca el elemento recibido con los datos anteriores.
-
-1. **Endpoint:** ```/museos/actualizarMuseo```
-2. **Método:** ```POST```
-3. **Body:**
-4. **Validaciones:**
-5. **Errores:**
+```
+{
+    {
+        "id": 2,
+        "titulo": "Titanic",
+        "anio": 1999,
+        "duracion": 187,
+        "genero": "romance"
+     }
+}
+```
 
 
-## 4. Borrar un elemento
-### 4.1 Borrar una pelicula
-Este metodo actualiza en la base de datos un elemento tipo pelicula con datos:
-- título
-- año
-- director
-- duración
-- clasificación
+2.1.4. **Errores:**
 
-#### Este metodo busca el elemento recibido con los datos anteriores.
+```HTTP 1601``` 
 
-1. **Endpoint:** ```/peliculas/borrarPelicula```
-2. **Método:** ```DELETE```
-3. **Body:**
-4. **Validaciones:**
-5. **Errores:**
+### 2.2 Mostrar museos
+Este metodo muestra los museos almacenados en la base de datos
 
-### 4.2 Borrar un museo
-Este metodo introduce en la base de datos un elemento tipo museo con sus respectivos datos:
-- nombre
-- categoria
-- ubicación
-- descripción
+2.2.1. **Endpoint:** ```/api/museos/obtenerMuseos```
 
-#### Este metodo busca el elemento recibido con los datos anteriores.
+2.2.2. **Método:** ```GET```
 
-1. **Endpoint:** ```/museos/borrarMuseo```
-2. **Método:** ```DELETE```
-3. **Body:**
-4. **Validaciones:**
-5. **Errores:**
+2.2.3. **Response:** 
+
+```
+{
+    {
+        "id": 2,
+        "nombre": "Museo de Cera",
+        "anio": 2004,
+        "lugar": 0,
+        "precioBoleto": 212
+    }
+}
+```
+
+
+2.2.4. **Errores:**
+
+```HTTP 1601``` 
