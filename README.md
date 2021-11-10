@@ -174,7 +174,7 @@ Este metodo muestra las playlists almacenadas en la base de datos
 {
     {
         "idP": 2,
-        "lanzamiento": 1990,
+        "lanzamiento": 1997,
         "peliculaId": 1,
         "museoId": 1
     }
