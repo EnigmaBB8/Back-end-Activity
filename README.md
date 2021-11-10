@@ -313,7 +313,7 @@ Este metodo borra un museo de la base de datos segun su id
 ```HTTP 1503``` 
 
 ### 4.3 Borrar una playlist
-Este metodo borra un museo de la base de datos segun su id 
+Este metodo borrar una playlist de la base de datos segun su id 
 
 4.3.1. **Endpoint:** ```/api/playlist/borrarPlaylist```
 
