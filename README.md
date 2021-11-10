@@ -3,25 +3,26 @@
 ## 1. Agregar un elemento
 ### 1.1 Agregar una pelicula
 Este metodo introduce a la base de datos un elemento tipo pelicula con sus respectivos datos:
-- título
-- año
-- director
-- duración
-- clasificación
+- id
+- titulo
+- anio
+- duracion
+- genero
 
 #### NOTA: todos los campos NO deben estar vacios.
 
-1. **Endpoint:** ```/peliculas/agregarPelicula```
+1. **Endpoint:** ```/api/peliculas/agregarPelicula```
 2. **Método:** ```POST```
 3. **Body:** 
 
 ```
 {
-    "titulo": "Mexico Magico y Tragico",
-    "año": "2042",
-    "director": "Mario Quintanilla",
-    "duracion": "1:35",
-    "clasificacion": "R-15"
+    "id":1,
+    "titulo": "Harry Potter y la piedra filosofal",
+    "anio": 1999,
+    "duracion": 145,
+    "genero": "Ficcion"
+    
 }
 ```
 
